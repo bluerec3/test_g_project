@@ -13,7 +13,8 @@ variables:
     description: The catalog to use
   schema:
     description: The schema to use
-
+  warehouse_id:
+    description: warehouse id
 targets:
   dev:
     # The default target uses 'mode: development' to create a development copy.
@@ -27,6 +28,7 @@ targets:
     variables:
       catalog: workspace
       schema: ${workspace.current_user.short_name}
+      warehouse_id: 20f40d4dcd56b3ce
     presets:
       artifacts_dynamic_version: true
   prod:
@@ -38,6 +40,7 @@ targets:
     variables:
       catalog: workspace
       schema: prod
+      warehouse_id: 20f40d4dcd56b3ce
     permissions:
       - user_name: sumitsaurabh202@gmail.com
         level: CAN_MANAGE

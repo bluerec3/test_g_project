@@ -13,7 +13,7 @@ from pyspark.sql.types import *
 
 catalog_name=spark.conf.get('catalog_name')
 
-volume_path = "/Volumes/{catalog_name}/bronze/earthquake_data"
+volume_path = f"/Volumes/{catalog_name}/bronze/earthquake_data"
 primary_key = "id"
 properties_schema = StructType(
     [

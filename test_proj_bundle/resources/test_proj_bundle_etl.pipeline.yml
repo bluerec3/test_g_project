@@ -3,17 +3,17 @@
 resources:
   pipelines:
     test_proj_bundle_etl:
-      name: test_proj_bundle_etl
-      catalog: ${var.catalog}
-      schema: ${var.schema}
-      root_path: "../src/test_proj_bundle_etl"
-
+      name: Bronze_Silver1
+      configuration:
+        catalog_name: ${var.catalog}
       libraries:
         - glob:
-            include: ../src/test_proj_bundle_etl/transformations/**
-
-      environment:
-        dependencies:
-          # We include every dependency defined by pyproject.toml by defining an editable environment
-          # that points to the folder where pyproject.toml is deployed.
-          - --editable ${workspace.file_path}
+            include: ../src/Bronze_Silver1/transformations/**
+      schema: silver
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: ${var.catalog}
+      serverless: true
+      root_path: ../src/Bronze_Silver1
