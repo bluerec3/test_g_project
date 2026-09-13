@@ -1,0 +1,19 @@
+# The main pipeline for test_proj_bundle
+
+resources:
+  pipelines:
+    test_proj_bundle_etl:
+      name: Bronze_Silver1
+      configuration:
+        catalog_name: ${var.catalog}
+      libraries:
+        - glob:
+            include: ../src/Bronze_Silver1/transformations/**
+      schema: silver
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: ${var.catalog}
+      serverless: true
+      root_path: ../src/Bronze_Silver1
